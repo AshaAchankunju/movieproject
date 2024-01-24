@@ -1,0 +1,39 @@
+Movie.objects.create(name="Ozler",language="malayalam",run_time=120,genre="action",director="Midhun",year=2024,actors="Jayaram")
+Movie.objects.create(name="Neru",language="malayalam",run_time=140,genre="emotional",director="Jithu",year=2024,actors="Mohanlal")
+Movie.objects.create(name="Falimy",language="malayalam",run_time=130,genre="family",director="Basil",year=2023,actors="Jagadheesh")
+Movie.objects.create(name="KGF",language="tamil",run_time=140,genre="action",director="Prashanth",year=2022,actors="Yash")
+Movie.objects.create(name="Jawan",language="hindi",run_time=130,genre="Thriller",director="Atlee",year=2023,actors="Sharuq khan")
+Movie.objects.create(name="migration",language="english",run_time=120,genre="animation",director="Benjamin",year=2022,actors="Elizabeth")
+
+....to fetch all details
+qs=Movie.objects.all() 
+
+.....to fetch specific object
+qs=Movie.objects.get(id=2)
+
+.....to update
+Movie.objects.filter(id=1).update(genre='comedy')
+
+.......to delete
+Movie.objects.filter(id=1).delete()
+
+......field lookup
+qs=Movie.objects.filter(year<2024)// less than not support
+<  __lt
+<=  __lte
+>  __gt
+>=  __gte
+qs=Movie.objects.filter(year__lt=2024)
+qs=Movie.objects.filter(year__gt=2023)
+qs=Movie.objects.filter(run_time__lte=120)
+
+.....fetch employees with year!=2024
+qs=Movie.objects.exclude(year=2024)
+
+... To  fetch a specific column of all employees
+... ORM query for listing all genres
+qs=Movie.objects.all().values_list("genre",flat=True).distinct
+
+
+
+
